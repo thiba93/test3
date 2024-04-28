@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import { toast } from "sonner"
+import Link from "next/link"
+
 
 const Category = () => {
   const [categories, setCategories] = useState([])
@@ -35,9 +37,10 @@ const Category = () => {
   }, [])
 
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "1rem", marginTop: "2rem" }}>
+    <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "right", gap: "1rem", marginTop: "2rem" }}>
     {categories.map((category, index) => (
       <div key={index} style={{ width: "calc(33.333% - 1rem)", position: "relative", marginBottom: "20px" }}>
+    <Link key={category.id} href={`/category/categoryId/products/products`} passHref>
       <Image 
             src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcRifpBsS3fGJgO70OE7vGwLDt7IIKF02wVju8PwaNJXyxoadWRS4rDhgqvEVXBkj-IkllRN6RDByQp49zM"
             alt={category.displayName}
@@ -58,10 +61,11 @@ const Category = () => {
         }}>
           {category.displayName}
         </p>
+        </Link>
       </div>
     ))}
   </div>
-)
+ )
 }
 
 
